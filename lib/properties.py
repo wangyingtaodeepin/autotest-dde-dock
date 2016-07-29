@@ -3,6 +3,15 @@
 
 class dockClass(object):
     def __init__(self):
+        self.dbus_dest      = "com.deepin.dde.daemon.Dock"
+        self.dbus_objpath   = "/com/deepin/dde/daemon/Dock"
+        self.dbus_interface = "com.deepin.dde.daemon.Dock"
+
+        self.dbus_properties_displaymode = "DisplayMode"
+        self.dbus_properties_hidemode    = "HideMode"
+        self.dbus_properties_hidestate   = "HideState"
+        self.dbus_properties_position    = "Position"
+
         self.displaymode_fashion   = 0    # 时尚
         self.displaymode_efficient = 1    # 高效
 

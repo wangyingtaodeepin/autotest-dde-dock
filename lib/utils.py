@@ -23,8 +23,8 @@ def getDdeDockObject(name = appname, description = appdescription):
 
 def getDdeDockSession():
     session_bus = dbus.SessionBus()
-    session_obj = session_bus.get_object('com.deepin.dde.daemon.Dock',
-                                         '/com/deepin/dde/daemon/Dock')
+    session_obj = session_bus.get_object(dock.dbus_dest,
+                                         dock.dbus_objpath)
     return session_obj
 
 def getDdeDockPropertiesInterface():
@@ -36,17 +36,44 @@ def getDdeDockPropertiesInterface():
 def getDdeDockInterface():
     session_dock = getDdeDockSession()
     interface = dbus.Interface(session_dock, 
-                               dbus_interface='com.deepin.dde.daemon.Dock')
+                               dbus_interface=dock.dbus_interface)
 
     return interface
 
 def getDdeDockDisplayMode():
     properties_iface = getDdeDockPropertiesInterface()
-    return properties_iface.Get('com.deepin.dde.daemon.Dock', "DisplayMode")
+    return properties_iface.Get(dock.dbus_interface, dock.dbus_properties_displaymode)
     
-def setDdeDockDisplayMode(mode):
+def setDdeDockDisplayMode(displaymode):
     properties_iface = getDdeDockPropertiesInterface()
-    properties_iface.Set('com.deepin.dde.daemon.Dock', "DisplayMode", mode)
+    properties_iface.Set(dock.dbus_interface, dock.dbus_properties_displaymode, displaymode)
+    sleep(2)
+
+def getDdeDockPosition():
+    properties_iface = getDdeDockPropertiesInterface()
+    return properties_iface.Get(dock.dbus_interface, dock.dbus_properties_position)
+
+def setDdeDockPosition(position):
+    properties_iface = getDdeDockPropertiesInterface()
+    properties_iface.Set(dock.dbus_interface, dock.dbus_properties_position, position)
+    sleep(2)
+
+def getDdeDockHideMode():
+    properties_iface = getDdeDockPropertiesInterface()
+    return properties_iface.Get(dock.dbus_interface, dock.dbus_properties_hidemode)
+
+def setDdeDockHideMode(hidemode):
+    properties_iface = getDdeDockPropertiesInterface()
+    properties_iface.Set(dock.dbus_interface, dock.dbus_properties_hidemode, hidemode)
+    sleep(2)
+
+def getDdeDockHideState():
+    properties_iface = getDdeDockPropertiesInterface()
+    return properties_iface.Get(dock.dbus_interface, dock.dbus_properties_hidestate)
+
+def setDdeDockHideState(hidestate):
+    properties_iface = getDdeDockPropertiesInterface()
+    properties_iface.Set(dock.dbus_interface, dock.dbus_properties_hidestate, hidestate)
     sleep(2)
 
 def openFashionMode():
@@ -54,4 +81,3 @@ def openFashionMode():
 
 def openEfficientMode():
     setDdeDockDisplayMode(dock.displaymode_efficient)
-

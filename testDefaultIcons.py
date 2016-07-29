@@ -35,10 +35,10 @@ class FashionDefaultIcons(unittest.TestCase):
     def testDifferentMode(self):
         mode = utils.getDdeDockDisplayMode()
         self.assertTrue(mode == utils.dock.displaymode_fashion)
-        utils.openEfficientMode()
+        utils.setDdeDockDisplayMode(utils.dock.displaymode_efficient)
         mode = utils.getDdeDockDisplayMode()
         self.assertTrue(mode == utils.dock.displaymode_efficient)
-        utils.openFashionMode()
+        utils.setDdeDockDisplayMode(utils.dock.displaymode_fashion)
         mode = utils.getDdeDockDisplayMode()
         self.assertTrue(mode == utils.dock.displaymode_fashion)
 
