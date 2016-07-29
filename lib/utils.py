@@ -6,6 +6,9 @@ from Xlib.display import Display
 from pykeyboard import PyKeyboard
 from pymouse import PyMouse
 import dbus
+from time import sleep
+
+from lib.properties import dock
 
 appname = "dde-dock"
 appdescription = "/usr/bin/dde-dock"
@@ -37,20 +40,18 @@ def getDdeDockInterface():
 
     return interface
 
-def getDdeDockMode():
+def getDdeDockDisplayMode():
     properties_iface = getDdeDockPropertiesInterface()
     return properties_iface.Get('com.deepin.dde.daemon.Dock', "DisplayMode")
     
+def setDdeDockDisplayMode(mode):
+    properties_iface = getDdeDockPropertiesInterface()
+    properties_iface.Set('com.deepin.dde.daemon.Dock', "DisplayMode", mode)
+    sleep(2)
 
 def openFashionMode():
-    pass
+    setDdeDockDisplayMode(dock.fashionmode)
 
-def openEffcientMode():
-    pass
+def openEfficientMode():
+    setDdeDockDisplayMode(dock.efficientmode)
 
-class dockClass(object):
-    def __init__(self):
-        self.fashionmode = 0
-        self.efficientmode = 1
-
-dock = dockClass()

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from time import sleep
 import unittest
 from lib import utils
 
@@ -18,7 +19,7 @@ class testDefaultIcons(unittest.TestCase):
                                "datetime"]
 
         cls.ddedockobject = utils.getDdeDockObject()
-        cls.defaultmode = utils.getDdeDockMode()
+        cls.defaultmode = utils.getDdeDockDisplayMode()
 
     @classmethod
     def tearDownClass(cls):
@@ -30,8 +31,14 @@ class testDefaultIcons(unittest.TestCase):
             self.assertTrue(icon, "Can't find the [ %s ] icon in the dock region" % name)
 
     def testDifferentMode(self):
-        mode = utils.getDdeDockMode()
-        self.assertTrue(0 == utils.dock.fashionmode)
+        mode = utils.getDdeDockDisplayMode()
+        self.assertTrue(mode == utils.dock.fashionmode)
+        utils.openEfficientMode()
+        mode = utils.getDdeDockDisplayMode()
+        self.assertTrue(mode == utils.dock.efficientmode)
+        utils.openFashionMode()
+        mode = utils.getDdeDockDisplayMode()
+        self.assertTrue(mode == utils.dock.fashionmode)
 
 def suite():
     suite = unittest.TestSuite()
