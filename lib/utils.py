@@ -50,8 +50,8 @@ def setDdeDockDisplayMode(mode):
     sleep(2)
 
 def openFashionMode():
-    setDdeDockDisplayMode(dock.fashionmode)
+    setDdeDockDisplayMode(dock.displaymode_fashion)
 
 def openEfficientMode():
-    setDdeDockDisplayMode(dock.efficientmode)
+    setDdeDockDisplayMode(dock.displaymode_efficient)
 

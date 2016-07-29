@@ -5,18 +5,20 @@ from time import sleep
 import unittest
 from lib import utils
 
-class testDefaultIcons(unittest.TestCase):
+class FashionDefaultIcons(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.defaulticonlist = ["Launcher",
+        cls.defaultfashioniconlist = ["Launcher",
                                "显示桌面",
+                               "多任务视图",
                                "文件",
                                "深度商店",
                                "深度音乐",
                                "Google Chrome",
                                "控制中心",
-                               "shutdown",
-                               "datetime"]
+                               "system-tray-fashion-mode-item",
+                               "shutdown-shutdown",
+                               "datetime-"]
 
         cls.ddedockobject = utils.getDdeDockObject()
         cls.defaultmode = utils.getDdeDockDisplayMode()
@@ -26,24 +28,30 @@ class testDefaultIcons(unittest.TestCase):
         pass
     
     def testExists(self):
-        for name in self.defaulticonlist:
+        for name in self.defaultfashioniconlist:
             icon = self.ddedockobject.child(name)
-            self.assertTrue(icon, "Can't find the [ %s ] icon in the dock region" % name)
+            self.assertTrue(icon, "Can't find the [ %s ] icon in the dock region with Fashion Mode" % name)
 
     def testDifferentMode(self):
         mode = utils.getDdeDockDisplayMode()
-        self.assertTrue(mode == utils.dock.fashionmode)
+        self.assertTrue(mode == utils.dock.displaymode_fashion)
         utils.openEfficientMode()
         mode = utils.getDdeDockDisplayMode()
-        self.assertTrue(mode == utils.dock.efficientmode)
+        self.assertTrue(mode == utils.dock.displaymode_efficient)
         utils.openFashionMode()
         mode = utils.getDdeDockDisplayMode()
-        self.assertTrue(mode == utils.dock.fashionmode)
+        self.assertTrue(mode == utils.dock.displaymode_fashion)
+
+    def testExistsChangedMode(self):
+        for name in self.defaultfashioniconlist:
+            icon = self.ddedockobject.child(name)
+            self.assertTrue(icon, "Can't find the [ %s ] icon in the dock region after chenge back to Fashion Mode" % name)
 
 def suite():
     suite = unittest.TestSuite()
-    suite.addTest(testDefaultIcons('testExists'))
-    suite.addTest(testDefaultIcons('testDifferentMode'))
+    suite.addTest(FashionDefaultIcons('testExists'))
+    suite.addTest(FashionDefaultIcons('testDifferentMode'))
+    suite.addTest(FashionDefaultIcons('testExistsChangedMode'))
     return suite
 
 if __name__ == "__main__":
