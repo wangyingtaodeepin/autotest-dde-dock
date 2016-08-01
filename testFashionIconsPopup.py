@@ -34,7 +34,7 @@ class FashionIconsPopup(unittest.TestCase):
         utils.setDdeDockDisplayMode(cls.defaultdisplaymode)
         utils.setDdeDockPosition(cls.defaultposition)
     
-    def testPopupExists(self):
+    def testBottomPopupExists(self):
         for name in self.defaultfashioniconlist:
             icon = self.ddedockobject.child(name)
             self.assertTrue(icon, "Can't find the [ %s ] icon in the dock region with Efficient Mode" % name)
@@ -57,12 +57,96 @@ class FashionIconsPopup(unittest.TestCase):
                 icon_popup = self.ddedockobject.child("launcher-popup") 
                 sleep(3)
 
-            self.assertTrue(icon_popup, "Position bottom: Can't find the [ %s ] icon-popup in the dock region with Fashion Mode" % name)
+            self.assertTrue(icon_popup, "Position Bottom: Can't find the [ %s ] icon-popup in the dock region with Fashion Mode" % name)
+            print("find the popup window with icon: %s" % name)
+
+    def testTopPopupExists(self):
+        utils.setDdeDockPosition(utils.dock.position_top)
+        for name in self.defaultfashioniconlist:
+            icon = self.ddedockobject.child(name)
+            self.assertTrue(icon, "Can't find the [ %s ] icon in the dock region with Efficient Mode" % name)
+            icon.point()
+            if name != "datetime-" and \
+               name != "system-tray-fashion-mode-item" and \
+               name != "Launcher":
+                icon_popup = self.ddedockobject.child(name + '-popup')
+                sleep(3)
+            elif name == "system-tray-fashion-mode-item":
+                icon.click()
+                icon_popup = self.ddedockobject.child('sys-tray-popup')
+                sleep(3)
+                icon.click()
+                sleep(3)
+            elif name == "datetime-":
+                icon_popup = self.ddedockobject.child(name + 'popup')
+                sleep(3)
+            elif name == "Launcher":
+                icon_popup = self.ddedockobject.child("launcher-popup") 
+                sleep(3)
+
+            self.assertTrue(icon_popup, "Position Top: Can't find the [ %s ] icon-popup in the dock region with Fashion Mode" % name)
+            print("find the popup window with icon: %s" % name)
+
+    def testRightPopupExists(self):
+        utils.setDdeDockPosition(utils.dock.position_right)
+        for name in self.defaultfashioniconlist:
+            icon = self.ddedockobject.child(name)
+            self.assertTrue(icon, "Can't find the [ %s ] icon in the dock region with Efficient Mode" % name)
+            icon.point()
+            if name != "datetime-" and \
+               name != "system-tray-fashion-mode-item" and \
+               name != "Launcher":
+                icon_popup = self.ddedockobject.child(name + '-popup')
+                sleep(3)
+            elif name == "system-tray-fashion-mode-item":
+                icon.click()
+                icon_popup = self.ddedockobject.child('sys-tray-popup')
+                sleep(3)
+                icon.click()
+                sleep(3)
+            elif name == "datetime-":
+                icon_popup = self.ddedockobject.child(name + 'popup')
+                sleep(3)
+            elif name == "Launcher":
+                icon_popup = self.ddedockobject.child("launcher-popup") 
+                sleep(3)
+
+            self.assertTrue(icon_popup, "Position Right: Can't find the [ %s ] icon-popup in the dock region with Fashion Mode" % name)
+            print("find the popup window with icon: %s" % name)
+
+    def testLeftPopupExists(self):
+        utils.setDdeDockPosition(utils.dock.position_left)
+        for name in self.defaultfashioniconlist:
+            icon = self.ddedockobject.child(name)
+            self.assertTrue(icon, "Can't find the [ %s ] icon in the dock region with Efficient Mode" % name)
+            icon.point()
+            if name != "datetime-" and \
+               name != "system-tray-fashion-mode-item" and \
+               name != "Launcher":
+                icon_popup = self.ddedockobject.child(name + '-popup')
+                sleep(3)
+            elif name == "system-tray-fashion-mode-item":
+                icon.click()
+                icon_popup = self.ddedockobject.child('sys-tray-popup')
+                sleep(3)
+                icon.click()
+                sleep(3)
+            elif name == "datetime-":
+                icon_popup = self.ddedockobject.child(name + 'popup')
+                sleep(3)
+            elif name == "Launcher":
+                icon_popup = self.ddedockobject.child("launcher-popup") 
+                sleep(3)
+
+            self.assertTrue(icon_popup, "Position Left: Can't find the [ %s ] icon-popup in the dock region with Fashion Mode" % name)
             print("find the popup window with icon: %s" % name)
 
 def suite():
     suite = unittest.TestSuite()
-    suite.addTest(FashionIconsPopup('testPopupExists'))
+    suite.addTest(FashionIconsPopup('testBottomPopupExists'))
+    suite.addTest(FashionIconsPopup('testTopPopupExists'))
+    suite.addTest(FashionIconsPopup('testRightPopupExists'))
+    suite.addTest(FashionIconsPopup('testLeftPopupExists'))
     return suite
 
 if __name__ == "__main__":
