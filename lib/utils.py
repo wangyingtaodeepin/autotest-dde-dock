@@ -9,6 +9,7 @@ import dbus
 from time import sleep
 
 from lib.properties import dock
+from lib.window     import *
 
 appname = "dde-dock"
 appdescription = "/usr/bin/dde-dock"
