@@ -21,7 +21,7 @@ class dockClass(object):
 
         self.position_top    = 0    # 顶部
         self.position_right  = 1    # 右侧
-        self.position_botton = 2    # 底部，默认值
+        self.position_bottom = 2    # 底部，默认值
         self.position_left   = 3    # 左侧
 
         self.hidestate_show  = 1    # 显示
