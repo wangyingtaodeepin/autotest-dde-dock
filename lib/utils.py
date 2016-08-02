@@ -24,6 +24,10 @@ def keySingle(key):
     k.release_key(key)
     sleep(2)
 
+def keyTypeString(str):
+    k.type_string(str)
+    sleep(2)
+
 def getDdeDockObject(name = appname, description = appdescription):
     return root.application(name, description)
 
