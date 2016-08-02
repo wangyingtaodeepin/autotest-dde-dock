@@ -38,9 +38,32 @@ class DeepinAppstore(unittest.TestCase):
         win = utils.findWindow(self.window_name)
         self.assertFalse(win)
 
+    def testOpenWithR(self):
+        iconobj = self.ddedockobject.child(self.icon_deepinappstore)
+        self.assertTrue(iconobj)
+        iconobj.click(3)
+        utils.keySingle('r')
+        sleep(4)
+        win = utils.findWindow(self.window_name)
+        self.assertTrue(win)
+
+    def testOpenWithEnter(self):
+        iconobj = self.ddedockobject.child(self.icon_deepinappstore)
+        self.assertTrue(iconobj)
+        iconobj.click(3)
+        utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.enter_key)
+        sleep(4)
+        win = utils.findWindow(self.window_name)
+        self.assertTrue(win)
+
 def suite():
     suite = unittest.TestSuite()
     suite.addTest(DeepinAppstore('testOpen'))
+    suite.addTest(DeepinAppstore('testClose'))
+    suite.addTest(DeepinAppstore('testOpenWithR'))
+    suite.addTest(DeepinAppstore('testClose'))
+    suite.addTest(DeepinAppstore('testOpenWithEnter'))
     suite.addTest(DeepinAppstore('testClose'))
     return suite
 

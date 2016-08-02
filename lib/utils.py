@@ -19,6 +19,11 @@ m = PyMouse()
 
 resolution = Display().screen().root.get_geometry()
 
+def keySingle(key):
+    k.press_key(key)
+    k.release_key(key)
+    sleep(2)
+
 def getDdeDockObject(name = appname, description = appdescription):
     return root.application(name, description)
 
