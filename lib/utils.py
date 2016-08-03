@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
 from dogtail.tree import *
 from Xlib.display import Display
 from pykeyboard import PyKeyboard
@@ -13,6 +14,7 @@ from lib.window     import *
 
 appname = "dde-dock"
 appdescription = "/usr/bin/dde-dock"
+resultfile = "./result.txt"
 
 k = PyKeyboard()
 m = PyMouse()
@@ -91,3 +93,15 @@ def openFashionMode():
 
 def openEfficientMode():
     setDdeDockDisplayMode(dock.displaymode_efficient)
+
+def commitresult(id, result):
+    if os.path.exists(resultfile):
+        with open(resultfile, 'a') as f:
+            idstr = " ".join((id, str(result)))
+            f.write(idstr + os.linesep)
+            f.close()
+    else:
+        with open(resultfile, 'w') as f:
+            idstr = " ".join((id, str(result)))
+            f.write(idstr + os.linesep)
+            f.close()

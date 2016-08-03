@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+from time import sleep
 from lib import utils
 from lib import runner
 
@@ -21,6 +22,7 @@ class MyTestResult(runner.MyTextTestResult):
 class FashionFunction(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.caseid = '68136'
         cls.casename = "all-2471:时尚模式功能测试"
         cls.ddedockobject = utils.getDdeDockObject()
         cls.dock_mainwindow = "dock-mainwindow"
@@ -28,11 +30,7 @@ class FashionFunction(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         global result
-        if result == True:
-            print("Successful")
-
-        if result == False:
-            print("Failed")
+        utils.commitresult(cls.caseid, result)
 
     def setUp(self):
         pass
@@ -52,13 +50,61 @@ class FashionFunction(unittest.TestCase):
         self.assertTrue(width > 0)
         self.assertTrue(height > 0)
 
+    def testKeepDisplayMode(self):
+        utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
+        sleep(2)
+        utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.enter_key)
+        defaultdisplaymode = utils.getDdeDockDisplayMode()
+        self.assertTrue(utils.dock.displaymode_fashion == defaultdisplaymode)
+        defaultposition = utils.getDdeDockPosition()
+        self.assertTrue(utils.dock.position_bottom == defaultposition)
+        defaulthidestate = utils.getDdeDockHideState()
+        self.assertTrue(utils.dock.hidestate_show == defaulthidestate)
+        main_window = self.ddedockobject.child(self.dock_mainwindow)
+        (width, height) = main_window.size
+        self.assertTrue(width > 0)
+        self.assertTrue(height > 0)
+
     def testChangeDisplayMode(self):
-        self.assertTrue(True)
+        utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
+        sleep(2)
+        utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.enter_key)
+        defaultdisplaymode = utils.getDdeDockDisplayMode()
+        self.assertTrue(utils.dock.displaymode_efficient == defaultdisplaymode)
+        defaultposition = utils.getDdeDockPosition()
+        self.assertTrue(utils.dock.position_bottom == defaultposition)
+        defaulthidestate = utils.getDdeDockHideState()
+        self.assertTrue(utils.dock.hidestate_show == defaulthidestate)
+        main_window = self.ddedockobject.child(self.dock_mainwindow)
+        (width, height) = main_window.size
+        self.assertTrue(width > 0)
+        self.assertTrue(height > 0)
+
+    def testChangeBackDisplayMode(self):
+        utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
+        sleep(2)
+        utils.keySingle(utils.k.down_key)
+        utils.keySingle(utils.k.enter_key)
+        defaultdisplaymode = utils.getDdeDockDisplayMode()
+        self.assertTrue(utils.dock.displaymode_fashion == defaultdisplaymode)
+        defaultposition = utils.getDdeDockPosition()
+        self.assertTrue(utils.dock.position_bottom == defaultposition)
+        defaulthidestate = utils.getDdeDockHideState()
+        self.assertTrue(utils.dock.hidestate_show == defaulthidestate)
+        main_window = self.ddedockobject.child(self.dock_mainwindow)
+        (width, height) = main_window.size
+        self.assertTrue(width > 0)
+        self.assertTrue(height > 0)
 
 def suite():
     suite = unittest.TestSuite()
     suite.addTest(FashionFunction('testBasicFunction'))
+    suite.addTest(FashionFunction('testKeepDisplayMode'))
     suite.addTest(FashionFunction('testChangeDisplayMode'))
+    suite.addTest(FashionFunction('testChangeBackDisplayMode'))
     return suite
 
 if __name__ == "__main__":
