@@ -24,7 +24,10 @@ resolution = Display().screen().root.get_geometry()
 def keySingle(key):
     k.press_key(key)
     k.release_key(key)
-    sleep(2)
+    if key != k.enter_key:
+        sleep(0.5)
+    else:
+        sleep(2)
 
 def keyTypeString(str):
     k.type_string(str)

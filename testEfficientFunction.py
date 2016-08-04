@@ -48,7 +48,7 @@ class EfficientFunction(unittest.TestCase):
 
     def testChangeDisplayMode(self):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
-        sleep(2)
+        sleep(1)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
@@ -77,7 +77,7 @@ class EfficientFunction(unittest.TestCase):
 
     def testKeepDisplayMode(self):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
-        sleep(2)
+        sleep(1)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
@@ -94,7 +94,7 @@ class EfficientFunction(unittest.TestCase):
 
     def testChangeDisplayModeToFashion(self):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
-        sleep(2)
+        sleep(1)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
         displaymode = utils.getDdeDockDisplayMode()
@@ -110,7 +110,7 @@ class EfficientFunction(unittest.TestCase):
 
     def testChangeBackDisplayMode(self):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
-        sleep(2)
+        sleep(1)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)

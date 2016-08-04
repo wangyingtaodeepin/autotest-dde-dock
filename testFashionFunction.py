@@ -60,7 +60,7 @@ class FashionFunction(unittest.TestCase):
 
     def testKeepDisplayMode(self):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
-        sleep(2)
+        sleep(1)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
         defaultdisplaymode = utils.getDdeDockDisplayMode()
@@ -76,7 +76,7 @@ class FashionFunction(unittest.TestCase):
 
     def testChangeDisplayMode(self):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
-        sleep(2)
+        sleep(1)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
@@ -93,7 +93,7 @@ class FashionFunction(unittest.TestCase):
 
     def testChangeBackDisplayMode(self):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
-        sleep(2)
+        sleep(1)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
         defaultdisplaymode = utils.getDdeDockDisplayMode()
