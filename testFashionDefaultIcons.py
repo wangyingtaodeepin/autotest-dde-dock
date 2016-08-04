@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from time import sleep
 import unittest
 from lib import utils
+from lib.waiter import waiter
 
 class FashionDefaultIcons(unittest.TestCase):
     @classmethod

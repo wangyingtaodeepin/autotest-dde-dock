@@ -27,7 +27,7 @@ def keySingle(key):
     if key != k.enter_key:
         sleep(0.5)
     else:
-        sleep(1)
+        sleep(1.5)
 
 def keyTypeString(str):
     k.type_string(str)
