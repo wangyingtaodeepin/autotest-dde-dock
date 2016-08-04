@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from time import sleep
 from lib import utils
 from lib import runner
+from lib.waiter import waiter
 
 result = True
 
@@ -60,7 +60,7 @@ class FashionExistRight(unittest.TestCase):
 
     def testChangePositionToRight(self):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
-        sleep(2)
+        waiter.waitMapNotify()
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
@@ -68,6 +68,7 @@ class FashionExistRight(unittest.TestCase):
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.enter_key)
+        waiter.waitMapNotify()
         defaultdisplaymode = utils.getDdeDockDisplayMode()
         self.assertTrue(utils.dock.displaymode_fashion == defaultdisplaymode)
         defaultposition = utils.getDdeDockPosition()

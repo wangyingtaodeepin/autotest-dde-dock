@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from time import sleep
 from lib import utils
 from lib import runner
+from lib.waiter import waiter
 
 result = True
 
@@ -60,7 +60,7 @@ class FashionExistLeft(unittest.TestCase):
 
     def testChangePositionToLeft(self):
         utils.m.click(int(utils.resolution.width/2), utils.resolution.height, 2)
-        sleep(2)
+        waiter.waitMapNotify()
         utils.keySingle(utils.k.down_key)
         utils.keySingle(utils.k.left_key)
         utils.keySingle(utils.k.down_key)
