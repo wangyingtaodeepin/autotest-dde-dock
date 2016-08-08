@@ -102,9 +102,9 @@ class EfficientIconsPopup(unittest.TestCase):
 def suite():
     suite = unittest.TestSuite()
     suite.addTest(EfficientIconsPopup('testBottomPopupExists'))
-    suite.addTest(EfficientIconsPopup('testTopPopupExists'))
-    suite.addTest(EfficientIconsPopup('testRightPopupExists'))
-    suite.addTest(EfficientIconsPopup('testLeftPopupExists'))
+    #suite.addTest(EfficientIconsPopup('testTopPopupExists'))
+    #suite.addTest(EfficientIconsPopup('testRightPopupExists'))
+    #suite.addTest(EfficientIconsPopup('testLeftPopupExists'))
     return suite
 
 if __name__ == "__main__":

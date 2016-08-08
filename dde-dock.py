@@ -12,6 +12,8 @@ import testFashionFunction
 import testEfficientFunction
 import testFashionExistLeft
 import testFashionExistRight
+import testFashionDockSize
+import testEfficientDockSize
 
 def main():
     suite00 = testFashionDefaultIcons.suite()
@@ -22,9 +24,12 @@ def main():
     suite2 = testEfficientFunction.suite()
     suite3 = testFashionExistLeft.suite()
     suite4 = testFashionExistRight.suite()
+    suite5 = testFashionDockSize.suite()
+    suite6 = testEfficientDockSize.suite()
 
     alltests = unittest.TestSuite((suite00, suite01, suite02, suite03,
-                                   suite1, suite2, suite3, suite4))
+                                   suite1, suite2, suite3, suite4,
+                                   suite5, suite6))
 
     runner = unittest.TextTestRunner()
     runner.run(alltests)

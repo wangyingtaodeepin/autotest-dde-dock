@@ -11,6 +11,7 @@ from time import sleep
 
 from lib.properties import dock
 from lib.window     import *
+from lib.dockmenu import dockmenu
 
 appname = "dde-dock"
 appdescription = "/usr/bin/dde-dock"
@@ -90,6 +91,10 @@ def setDdeDockHideState(hidestate):
     properties_iface = getDdeDockPropertiesInterface()
     properties_iface.Set(dock.dbus_interface, dock.dbus_properties_hidestate, hidestate)
     sleep(2)
+
+def getDdeDockIconSize():
+    properties_iface = getDdeDockPropertiesInterface()
+    return properties_iface.Get(dock.dbus_interface, dock.dbus_properties_iconsize)
 
 def openFashionMode():
     setDdeDockDisplayMode(dock.displaymode_fashion)

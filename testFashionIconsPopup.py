@@ -124,9 +124,9 @@ class FashionIconsPopup(unittest.TestCase):
 def suite():
     suite = unittest.TestSuite()
     suite.addTest(FashionIconsPopup('testBottomPopupExists'))
-    suite.addTest(FashionIconsPopup('testTopPopupExists'))
-    suite.addTest(FashionIconsPopup('testRightPopupExists'))
-    suite.addTest(FashionIconsPopup('testLeftPopupExists'))
+    #suite.addTest(FashionIconsPopup('testTopPopupExists'))
+    #suite.addTest(FashionIconsPopup('testRightPopupExists'))
+    #suite.addTest(FashionIconsPopup('testLeftPopupExists'))
     return suite
 
 if __name__ == "__main__":
