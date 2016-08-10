@@ -25,5 +25,5 @@ def findWindow(windowname):
 
 def closeWindow(win):
     win.close(time.time())
-    sleep(3)
+    sleep(2)
 

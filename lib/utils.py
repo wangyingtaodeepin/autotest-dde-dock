@@ -96,6 +96,10 @@ def getDdeDockIconSize():
     properties_iface = getDdeDockPropertiesInterface()
     return properties_iface.Get(dock.dbus_interface, dock.dbus_properties_iconsize)
 
+def setDdeDockIconSize(iconsize):
+    properties_iface = getDdeDockPropertiesInterface()
+    return properties_iface.Set(dock.dbus_interface, dock.dbus_properties_iconsize, iconsize)
+
 def openFashionMode():
     setDdeDockDisplayMode(dock.displaymode_fashion)
 
